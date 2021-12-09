@@ -1,0 +1,115 @@
+<!-- Modal -->
+<div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">提交订单</h4>
+            </div>
+            <form id="create_order_form" class="form-horizontal" method="post" action="/goods/create"
+                style="padding:10px 40px;">
+                <div class="modal-body">
+                    <!-- nickname -->
+                    <div class="form-group">
+                        <label for="inputNickname3">用户名</label>
+                        <input type="text" class="form-control" id="inputNickname3" placeholder="nickname"
+                            name="nickname" value="{{ user.nickname }}">
+                    </div>
+
+
+                    <!-- cellphone -->
+                    <div class="form-group">
+                        <label for="inputCellphone3">电话</label>
+                        <input type="text" class="form-control" id="inputCellphone3" placeholder="cellphone"
+                            name="cellphone" value="{{ user.cellphone }}">
+                    </div>
+                    <!-- address -->
+                    <div class="form-group">
+                        <label for="inputAddress3">地址</label>
+                        <input type="text" class="form-control" id="inputAddress3" placeholder="address" name="address"
+                            value="{{ user.address }}">
+                    </div>
+
+                    <!-- goods -->
+                    <div class="panel panel-default form-group">
+                        <div class="panel-heading">商品信息</div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>图片</th>
+                                            <th>商品名</th>
+                                            <th>数量</th>
+                                            <th>单价</th>
+                                            <th>合计</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {{ each cartList val}}
+                                        <tr>
+                                            <td>
+                                                <img src="{{ val.img }}" alt="" width="40px" height="40px">
+                                            </td>
+                                            <td>{{ val.fname }}</td>
+                                            <td>{{ val.productNum }}</td>
+                                            <td>￥{{ val.price }}</td>
+                                            <td>￥{{ val.price * val.productNum }}</td>
+                                        </tr>
+                                        {{ /each }}
+                                    </tbody>
+                                </table>
+
+                                <div class="price-sum tprice" style="float: right;">
+                                    总价：￥
+                                    <em class="totalPrice">60</em>
+                                </div>
+                                <input type="hidden" id="totalPrice" name="totalPrice" value="">
+                                <input type="hidden" id="cartList" name="cartList" value="{{ cartList }}">
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button></button>
+                    <button type="submit" class="btn btn-primary">提交</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+</div>
+
+<script>
+
+    $('#create_order_form').on('submit', function (e) {
+        e.preventDefault();
+        var formData = $(this).serialize();
+        // console.log(typeof formData);
+        $.ajax({
+            type: "post",
+            url: "/goods/create",
+            data: formData,
+            dataType: "json",
+            success: function (data) {
+                var err_code = data.err_code
+                if (err_code === 0) {
+                    window.alert('订单创建成功！')
+                    // 服务端重定向针对异步请求无效
+                    window.location.href = '/cart'
+                } else if (err_code === 500) {
+                    window.alert('服务器忙，请稍后重试！')
+                }
+            }
+        });
+
+
+    })
+
+
+
+</script>

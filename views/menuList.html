@@ -1,0 +1,48 @@
+{{ extend './_layouts/home.html' }}
+
+{{ block 'title'}}热门美食展示{{ /block }}
+
+{{ block 'head'}}
+<link rel="stylesheet" href="/public/css/normalize.css">
+<link rel="stylesheet" type="text/css" href="/public/css/default.css">
+<link rel="stylesheet" href="/public/css/menuList.css">
+{{ /block}}
+
+<!-- nav start -->
+{{ include './_partials/nav.html'}}
+<!-- nav end -->
+
+{{ block 'content' }}
+<section id="gallery-wrapper">
+    {{ each menuList value }}
+    <article class="white-panel">
+        <img src="{{ value.img }}" class="thumb">
+        
+        <h1><a href="javascript:;">{{value.titleName}}</a></h1>
+    </article>
+    {{ /each }}
+
+</section>
+{{ /block }}
+
+
+
+<!-- footer start -->
+{{ include './_partials/footer.html'}}
+<!-- footer end -->
+
+{{ block 'script' }}
+<script src="/public/js/pinterest_grid.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $("#gallery-wrapper").pinterest_grid({
+            no_columns: 3,
+            padding_x: 15,
+            padding_y: 20,
+            margin_bottom: 50,
+            single_column_breakpoint: 700
+        });
+
+    });
+</script>
+{{ /block }}

@@ -1,0 +1,140 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.jumbotron {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.header_container {
+    /* Center the content */
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    /* Take full size */
+    height: 300px;
+    width: 100%;
+
+    /* Background */
+    background: url('/public/images/bg/bg10.jpg') center center / cover no-repeat;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.table {
+    border-bottom: 2px solid #ccc;
+}
+
+.table>thead>tr>td,
+.table>thead>tr>th,
+.table>tbody>tr>td,
+.table>tbody>tr>th {
+    vertical-align: middle !important;
+}
+
+.decrement,
+.increment {
+    float: left;
+    border: 1px solid #cacbcb;
+    height: 18px;
+    line-height: 18px;
+    width: 16px;
+    text-align: center;
+    color: #666;
+    margin: 0;
+    background: #fff;
+    margin-left: -1px;
+}
+
+.itxt {
+    float: left;
+    border: 1px solid #cacbcb;
+    width: 42px;
+    height: 18px;
+    line-height: 18px;
+    text-align: center;
+    padding: 1px;
+    margin: 0;
+    margin-left: -1px;
+    font-size: 12px;
+    font-family: verdana;
+    color: #333;
+    -webkit-appearance: none;
+}
+
+.op_table {
+    border: 1px solid #ccc;
+    margin-top: 30px;
+    margin-bottom: 0 !important;
+}
+
+.price_result {
+    text-align: right;
+}
+
+.price-sum {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.price-sum em {
+    font-size: 16px;
+    color: #E2231A;
+    font-weight: 700;
+}
+
+.navbar-brand {
+    padding: 10px 15px;
+
+}
+
+.food_icon {
+    display: inline-block;
+}
+
+.footer_section {
+    padding: 20px;
+    background-color: #252525;
+    margin-top: 20px;
+    line-height: 1.5;
+}
+
+.container-fluid {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.footer_section .social_container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin: 25px 0;
+}
+
+.footer_section p {
+    margin: 0;
+    text-align: center;
+    color: #ffffff;
+}
+
+.footer_section .social_container h4 {
+    color: #a9a6a6;
+    font-weight: bold;
+    font-size: 2.5rem;
+}

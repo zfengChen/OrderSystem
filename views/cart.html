@@ -1,0 +1,141 @@
+{{ extend './_layouts/home.html' }}
+
+{{ block 'title'}}购物车{{ /block }}
+
+{{ block 'head'}}
+<link rel="stylesheet" href="/public/css/cart.css">
+{{ /block}}
+
+<!-- nav start -->
+{{ include './_partials/nav.html'}}
+<!-- nav end -->
+
+{{ block 'content'}}
+<!-- start cart header  -->
+<div class="jumbotron">
+    <div class="header_container">
+        <h2>Product Related</h1>
+            <ol class="breadcrumb">
+                <li><a href="/menu">菜单</a></li>
+                <li class="active">购物车</li>
+            </ol>
+    </div>
+</div>
+<!-- end cart header  -->
+
+<!-- start main -->
+<div class="container" style="min-height: 380px;">
+    <div class="row">
+
+        <!-- 开始 购物车商品显示模块 -->
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <caption>
+                    <h2>全部商品</h2>
+                </caption>
+                <thead>
+                    <tr>
+
+                        <th>商品图片</th>
+                        <th>名称</th>
+                        <th>单价</th>
+                        <th>数量</th>
+                        <th>合计</th>
+                        <th>操作</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {{ each cartList}}
+                    <!-- 1 -->
+                    <tr class="cart-item">
+                        <td>
+                            <img src="{{ $value.img }}" alt="" class="img-rounded" style="width: 120px;height: 120px;">
+                        </td>
+                        <td>{{ $value.fname }}</td>
+                        <td class="p-price">￥{{ $value.price }}</td>
+                        <td class="p-num">
+                            <div class="quantity-form">
+                                <a href="javascript:;" class="decrement">-</a>
+                                <input type="text" class="itxt" value="{{ $value.productNum }}">
+                                <a href="javascript:;" class="increment">+</a>
+                                <input type="hidden" class="pId" value="{{ $value.productId }}">
+                            </div>
+                        </td>
+                        <td class="p-sum">￥{{ $value.price * $value.productNum }}</td>
+                        <td>
+                            <button type="button" class="btn btn-danger p-action remove-goods"
+                                onclick="remove({{ $value.productId }})">x</button>
+                        </td>
+                        <!-- onclick="edit('add',{{ cartList[$index] }})" -->
+                    </tr>
+                    {{ /each }}
+                </tbody>
+            </table>
+        </div>
+        <!-- 结束 购物车商品显示模块 -->
+
+        <table class="table op_table">
+            <thead>
+                <tr>
+                    <th>
+                        <button type="button" class="btn btn-danger clear-all">清空购物车</button>
+                    </th>
+                    <th class="price_result">
+                        <form>
+
+                            <div class="price-sum">
+                                总价：￥
+                                <em class="totalPrice">60</em>
+                            </div>
+                            <input type="hidden" name="userId" value="{{ user._id }}">
+                            <Button type="button" class="btn btn-success" id="subBtn" data-toggle="modal"
+                                data-target="#cartModal">去结算</Button>
+                        </form>
+
+                    </th>
+
+                </tr>
+            </thead>
+
+        </table>
+    </div>
+</div>
+<!-- end main -->
+<!-- 结算模态框 -->
+{{ include './_partials/modal.html'}}
+
+{{ /block }}
+
+
+
+<!-- footer start -->
+{{ include './_partials/footer.html'}}
+<!-- footer end -->
+
+
+{{ block 'script'}}
+<script src="/public/js/cart.js"></script>
+<script>
+    function remove(productId) {
+        console.log(productId);
+
+        $.ajax({
+            type: "post",
+            url: "/cart/remove",
+            data: {
+                productId: productId
+            },
+            dataType: "json",
+            success: function (data) {
+                var err_code = data.err_code
+                if (err_code === 0) {
+                    window.alert('商品删除成功')
+                } else if (err_code === 500) {
+                    window.alert('服务器忙，请稍后重试！')
+                }
+            }
+        });
+    }
+</script>
+{{ /block }}

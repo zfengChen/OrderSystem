@@ -1,0 +1,143 @@
+{{ extend './_layouts/home.html' }}
+
+{{ block 'title'}}校园点餐系统首页{{ /block }}
+
+{{ block 'head'}}
+<link rel="stylesheet" href="/public/css/index.css">
+{{ /block}}
+
+<!-- nav start -->
+{{ include './_partials/nav.html'}}
+<!-- nav end -->
+
+{{ block 'content' }}
+<!-- start main -->
+<div class="container">
+
+
+    <form action="/search" method="get" class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="输入餐桌号" name="tableId">
+        </div>
+        <button type="submit" class="btn btn-default subBtn">查询</button>
+    </form>
+
+    <div>
+        <div class="panel panel-default col-lg-6 " style="min-width: 260px;
+                max-width: auto;">
+            <div class="panel-heading">
+                <h3 class="panel-title">查询结果</h3>
+            </div>
+            <div class="panel-body">
+                <table class="table table-striped .col-xs-6" style="min-width: 250px;
+                        max-width: auto;">
+                    {{ if table }}
+                    <thead>
+                        <tr>
+                            <th>餐桌号</th>
+                            <th>使用状态</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td scope="row">{{ table.tableId }}</td>
+                            <td>
+                                {{ table.status }}
+                            </td>
+                            <td>
+                                <a href="javascript:;" class="btn btn-primary glyphicon glyphicon-arrow-right btn_a"
+                                    aria-hidden="true"></a>
+                                <input type="hidden" class="hide_status" value="{{table.tableId}}">
+                            </td>
+                        </tr>
+                    </tbody>
+                    {{ else }}
+
+                    <thead>
+                        <tr>
+                            <th>餐桌号</th>
+                            <th>使用状态</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        {{ each tables}}
+
+                        <tr>
+                            <td scope="row">{{ $value.tableId }}</td>
+                            <td class="status">
+                                {{ $value.status }}
+                            </td>
+                            <td>
+                                <!-- /occupied?tableId={{ $value.tableId }}&tableStatus={{$value.status }} -->
+                                <a href="javascript:;"
+                                    class="btn btn-primary glyphicon glyphicon-arrow-right btn_a btn_sub"
+                                    onclick="occupied(this)" value1="{{ $value.tableId }}"
+                                    value2="{{$value.status }}"></a>
+
+                                <!-- <input type="hidden" class="hs" value="{{$value.tableId}}"> -->
+                            </td>
+                        </tr>
+                        {{ /each }}
+
+                    </tbody>
+
+                    {{ /if}}
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- end main -->
+{{ /block }}
+
+<!-- footer start -->
+{{ include './_partials/footer.html'}}
+<!-- footer end -->
+
+{{ block 'script'}}
+<script src="/node_modules/jquery/dist/jquery.js"></script>
+
+<script>
+    // 问题：箭头函数中this指向window
+    function occupied(obj) {
+        var tableId = $(obj).attr("value1")
+        var tableStatus = $(obj).attr("value2")
+        // console.log(tableStatus);
+
+        $.ajax({
+            type: "post",
+            url: "/perch",
+            data: {
+                tableId: tableId,
+                tableStatus: tableStatus
+            },
+            dataType: "json",
+            success: function (data) {
+                var err_code = data.err_code
+                if (err_code === 0) {
+                    // window.alert('占位成功！')
+                    window.alert(data.message);
+                    // 服务端重定向针对异步请求无效
+                    window.location.href = '/menu';
+                } else if (err_code === 1) {
+                    window.alert(data.message);
+                } else if (err_code === 500) {
+                    window.alert(data.message);
+                }
+            }
+        });
+
+    }
+
+
+
+
+
+
+
+</script>
+{{ /block }}

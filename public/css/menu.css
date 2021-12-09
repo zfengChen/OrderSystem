@@ -1,0 +1,147 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #f9f9f9;
+}
+
+.nav {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none
+}
+
+.product-tab-nav {
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center
+}
+
+.product-tab-nav li {
+    text-align: center
+}
+
+.nav-item {
+    -webkit-flex-basis: 0;
+    -ms-flex-preferred-size: 0;
+    flex-basis: 0;
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    text-align: center;
+}
+
+/* .section-space-top-100 {
+    padding-top: 100px
+} */
+
+.product-tab-nav {
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center
+}
+
+.navbar-brand {
+    padding: 10px 15px;
+
+}
+
+.food_icon {
+    display: inline-block;
+}
+
+.left_price {
+    text-align: left;
+    display: inline-block;
+    /* font-size: 22px; */
+}
+
+.btn {
+    padding: 1px 6px;
+}
+
+.btn-add {
+    /* text-align: right; */
+    float: right;
+}
+
+.table>thead>tr>td,
+.table>thead>tr>th,
+.table>tbody>tr>td,
+.table>tbody>tr>th {
+    vertical-align: middle !important;
+}
+
+.go_cart {
+    /* float: right; */
+    width: 100%;
+    border-top: 2px solid black;
+    text-align: right;
+    padding: 5px;
+}
+
+.footer_section {
+    padding: 20px;
+    background-color: #252525;
+    margin-top: 20px;
+    line-height: 1.5;
+}
+
+.container-fluid {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.footer_section .social_container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin: 25px 0;
+}
+
+.footer_section p {
+    margin: 0;
+    text-align: center;
+    color: #ffffff;
+}
+
+.footer_section .social_container h4 {
+    color: #a9a6a6;
+    font-weight: bold;
+    font-size: 2.5rem;
+}
+
+.shop_img{
+    min-width: 300px;
+    max-width: 300px;
+    min-height: 300px;
+    max-height: 300px;
+}
+.return-a {
+    font-size: 18px;
+}
+.row_header{
+    margin-top: 20px;
+}

@@ -1,0 +1,30 @@
+[{
+        "tname": "1号桌",
+        "tableId": "t001",
+        "status": "空闲"
+
+    }, {
+        "tname": "2号桌",
+        "tableId": "t002",
+        "status": "空闲"
+
+    }, {
+        "tname": "3号桌",
+        "tableId": "t003",
+        "status": "空闲"
+
+    }, {
+        "tname": "4号桌",
+        "tableId": "t004",
+        "status": "空闲"
+
+    }, {
+        "tname": "5号桌",
+        "tableId": "t004",
+        "status": "繁忙"
+
+    }
+
+
+
+]

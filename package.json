@@ -1,0 +1,25 @@
+{
+  "name": "ordersystem",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^3.4.1",
+    "express": "^4.17.1",
+    "jquery": "^3.6.0"
+  },
+  "devDependencies": {
+    "blueimp-md5": "^2.19.0",
+    "express-art-template": "^1.0.1",
+    "express-session": "^1.17.2",
+    "mongoose": "^6.0.15",
+    "nodemon": "^2.0.15"
+  }
+}

@@ -1,0 +1,15 @@
+[{
+    "email": "123456@qq.com",
+    "nickname": "admin01",
+    "password": "123",
+    "avatar": "/public/images/avatar-default.png",
+    "created_time": "2021-10-16",
+    "last_modified_time": "2021-10-16",
+    "address": "",
+    "gender": -1,
+    "cellphone": "123456789",
+    "cartList": [],
+    "orderList": []
+
+
+}]

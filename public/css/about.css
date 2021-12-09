@@ -1,0 +1,141 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style-type: none;
+}
+
+.container {
+    margin-top: 50px;
+}
+
+.navbar-brand {
+    padding: 10px 15px;
+
+}
+
+.food_icon {
+    display: inline-block;
+}
+
+.nav_btn {
+    margin-top: 16px;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #888;
+}
+
+.jumbotron {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.header_container {
+    /* Center the content */
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    /* Take full size */
+    height: 400px;
+    width: 100%;
+
+    /* Background */
+    background: url('/public/images/bg/11.jpeg') center center / cover no-repeat;
+}
+
+.pt {
+    padding-top: 7px;
+}
+
+.control-label {
+    text-align: center !important;
+
+}
+
+
+.footer_section {
+    padding: 20px;
+    background-color: #252525;
+    /* margin-top: 20px; */
+    line-height: 1.5;
+}
+
+
+
+.footer_section .social_container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin: 25px 0;
+}
+
+.footer_section p {
+    margin: 0;
+    text-align: center;
+    color: #ffffff;
+}
+
+.footer_section .social_container h4 {
+    color: #a9a6a6;
+    font-weight: bold;
+    font-size: 2.5rem;
+}
+
+.table>thead>tr>td,
+.table>thead>tr>th,
+.table>tbody>tr>td,
+.table>tbody>tr>th {
+    vertical-align: middle !important;
+}
+
+.list-gp {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    padding: 10px;
+}
+
+#tdAddress {
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+/* #container-row {
+    display: flex;
+}
+
+#sidebar{
+    flex: 1;
+}
+
+#right-sidebar{
+    flex: 5;
+} */
+
+#moreLists{
+    float: right;
+}
+
+.btn_del{
+    display: flex;
+    flex: 1;
+    justify-content: right;
+    align-items: center;
+    padding: 10px;
+}

@@ -1,0 +1,116 @@
+[
+    {
+        "productId": "10001",
+        "titleName": "木瓜",
+        "img": "/public/images/product/medium-size/1-1-270x300.jpg",
+        "bio": "鲜美多汁",
+        "price": "9.9"
+    },
+    {
+        "productId": "10002",
+        "titleName": "牛奶",
+        "img": "/public/images/product/medium-size/1-5-270x300.jpg",
+        "bio": "鲜美多汁",
+        "price": "4"
+    },
+    {
+        "productId": "10003",
+        "titleName": "皮皮虾",
+        "img": "/public/images/product/medium-size/1-4-270x300.jpg",
+        "bio": "鲜美多汁",
+        "price": "20"
+    },
+    {
+        "productId": "10004",
+        "titleName": "猪扒",
+        "img": "/public/images/product/medium-size/1-10-270x300.jpg",
+        "bio": "鲜嫩多汁",
+        "price": "16"
+    },
+    {
+        "productId": "10006",
+        "titleName": "萝卜",
+        "img": "/public/images/product/medium-size/1-3-270x300.jpg",
+        "bio": "爽脆可口",
+        "price": "3.5"
+    },
+    {
+        "productId": "10007",
+        "titleName": "大米",
+        "img": "/public/images/product/medium-size/1-6-270x300.jpg",
+        "bio": "香弹可口",
+        "price": "1"
+    },
+    {
+        "productId": "10008",
+        "titleName": "番石榴",
+        "img": "/public/images/product/medium-size/1-7-270x300.jpg",
+        "bio": "甜",
+        "price": "6"
+    },
+    {
+        "productId": "10009",
+        "titleName": "椰子",
+        "img": "/public/images/product/medium-size/1-8-270x300.jpg",
+        "bio": "提神醒脑",
+        "price": "5.5"
+    },
+    {
+        "productId": "10010",
+        "titleName": "香蕉",
+        "img": "/public/images/product/medium-size/1-9-270x300.jpg",
+        "bio": "多倍体无籽香蕉",
+        "price": "3.6"
+    },
+    {
+        "productId": "10011",
+        "titleName": "贝贝瓜",
+        "img": "/public/images/product/medium-size/1-11-270x300.jpg",
+        "bio": "这是一个贝贝瓜",
+        "price": "9"
+    },
+    {
+        "productId": "10012",
+        "titleName": "牛油果",
+        "img": "/public/images/product/medium-size/1-12-270x300.jpg",
+        "bio": "营养丰富",
+        "price": "4"
+    },
+    {
+        "productId": "10013",
+        "titleName": "三明治",
+        "img": "/public/images/product/medium-size/hot-1.png",
+        "bio": "营养价值高",
+        "price": "12"
+    },
+    {
+        "productId": "10014",
+        "titleName": "薄饼",
+        "img": "/public/images/product/medium-size/hot-2.png",
+        "bio": "管饱",
+        "price": "5"
+    },
+    {
+        "productId": "10015",
+        "titleName": "套餐1",
+        "img": "/public/images/product/medium-size/hot-3.png",
+        "bio": "营养价值高，炒饭+水果",
+        "price": "15"
+    },
+    {
+        "productId": "10016",
+        "titleName": "香辣鸡腿堡",
+        "img": "/public/images/product/medium-size/product01.jpg",
+        "bio": "劲辣美味",
+        "price": "9.99"
+    },{
+        "productId": "10017",
+        "titleName": "饺子",
+        "img": "/public/images/product/medium-size/slider-img.png",
+        "bio": "东北饺子",
+        "price": "15"
+    }
+
+
+
+]

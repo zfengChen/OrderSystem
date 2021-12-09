@@ -1,0 +1,73 @@
+[{
+        "productId": "10001",
+        "fname": "木瓜",
+        "price": "9.9",
+        "img": "/public/images/product/medium-size/1-1-270x300.jpg",
+        "checked": "",
+        "productNum": 1
+    },
+    {
+        "productId": "10002",
+        "fname": "牛奶",
+        "price": "4",
+        "img": "/public/images/product/medium-size/1-5-270x300.jpg",
+        "checked": "",
+        "productNum": 1
+    },
+    {
+        "productId": "10003",
+        "fname": "皮皮虾",
+        "price": "20",
+        "img": "/public/images/product/medium-size/1-4-270x300.jpg",
+        "checked": "",
+        "productNum": 1
+    },
+    {
+        "productId": "10004",
+        "fname": "猪扒",
+        "price": "16",
+        "img": "/public/images/product/medium-size/1-10-270x300.jpg",
+        "checked": "",
+        "productNum": 1
+    },
+    {
+        "productId": "10005",
+        "fname": "饺子",
+        "price": "11",
+        "img": "/public/images/product/medium-size/slider-img.png",
+        "checked": "",
+        "productNum": 1
+    },
+    {
+        "productId": "10006",
+        "fname": "三明治",
+        "price": "8",
+        "img": "/public/images/product/medium-size/hot-1.png",
+        "checked": "",
+        "productNum": 1
+    },
+    {
+        "productId": "10007",
+        "fname": "薄饼",
+        "price": "4.5",
+        "img": "/public/images/product/medium-size/hot-2.png",
+        "checked": "",
+        "productNum": 1
+    },
+    {
+        "productId": "10008",
+        "fname": "香蕉",
+        "price": "2.5",
+        "img": "/public/images/product/medium-size/1-9-270x300.jpg",
+        "checked": "",
+        "productNum": 1
+    },
+    {
+        "productId": "10009",
+        "fname": "大米",
+        "price": "1",
+        "img": "/public/images/product/medium-size/1-6-270x300.jpg",
+        "checked": "",
+        "productNum": 1
+    }
+]

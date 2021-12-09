@@ -1,0 +1,96 @@
+{{ extend "./_layouts/home.html" }}
+{{ block "title"}}菜单列表{{ /block }}
+{{ block "head"}}
+<link rel="stylesheet" href="/public/css/menu.css">
+{{ /block}}
+
+<!-- nav start -->
+{{ include "./_partials/nav.html"}}
+<!-- nav end -->
+
+{{ block "content" }}
+
+<!-- Begin Product Area -->
+<div class="product-area section-space-top-100">
+    <div class="container">
+        <div class="row">
+            <div class="row_header">
+                <!-- col-xs-12 col-sm-9 -->
+                <!-- 店铺列表渲染开始 -->
+                <div class="row">
+
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="thumbnail">
+                            <img src="{{shop.shop_img}}" alt="shop image" class="shop_img">
+                            <div class="caption">
+                                <h2>{{shop.shop_name}}</h2>
+                                <p>简介：{{shop.shop_introduction}}</p>
+                                <p>地址：{{shop.shop_address}}</p>
+                                <p>投诉电话：{{shop.shop_phone}}</p>
+                                <a href="/menu" class="btn btn-info return-a">返回</a>
+                            </div>
+                        </div>
+                    </div><!-- /.col-lg-4 -->
+
+                </div><!-- /.row -->
+                <!-- 店铺列表渲染结束 -->
+
+                <!-- 菜单专区开始 -->
+                <div class="row" style="margin-top: 80px;">
+                    {{ each shop.shop_goods value }}
+                    <!-- 单列 -->
+                    <div class="col-lg-3 col-sm-3 col-xs-6">
+                        <div class="thumbnail">
+                            <img src="{{ value.img }}" alt="" style="height: 140px;width: 140px;">
+                            <div class="caption">
+                                <h3 class="fname">{{ value.fname }}</h3>
+                                <p class="left_price"><strong>￥ {{ value.price }}</strong></p>
+                                <a href="javascript:;" class="btn btn-info btn-add glyphicon glyphicon-shopping-cart"
+                                    onclick="addCart({{value.productId}},{{user}})" aria-hidden="true"></a>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    {{ /each }}
+
+                </div>
+            </div>
+            <!-- 菜单专区结束 -->
+        </div>
+    </div>
+</div>
+<!-- Product Area End Here -->
+{{ /block }}
+
+
+<!-- footer start -->
+{{ include "./_partials/footer.html"}}
+<!-- footer end -->
+
+{{ block "script"}}
+<script src="/public/js/menu.js"></script>
+<script>
+    function addCart(productId, user) {
+        $.ajax({
+            url: "/menus/add",
+            type: "POST",
+            data: {
+                productId: productId,
+                userId: user._id
+            },
+            dataType: "json",
+            success: function (data) {
+                var err_code = data.err_code
+                if (err_code === 0) {
+                    window.alert('商品添加成功！')
+                    // 服务端重定向针对异步请求无效
+                    // window.location.href = '/menu'
+                } else if (err_code === 500) {
+                    window.alert('服务器忙，请稍后重试！')
+                }
+            }
+        });
+    }
+</script>
+{{ /block}}

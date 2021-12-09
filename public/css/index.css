@@ -1,0 +1,100 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.btn_a {
+    padding: 1px 6px;
+}
+
+.container {
+
+    /* Center the content */
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    /* Take full size */
+    height: 100vh;
+    width: 100%;
+
+    /* Background */
+    background: url('/public/images/bg/banner-bg.jpg') top center / cover no-repeat;
+}
+
+.navbar-brand {
+    padding: 10px 15px;
+
+}
+
+.food_icon {
+    display: inline-block;
+}
+
+.nav_btn {
+    margin-top: 16px;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #888;
+}
+
+
+.footer_section {
+    padding: 20px;
+    background-color: #252525;
+    /* margin-top: 20px; */
+    line-height: 1.5;
+}
+
+.container-fluid {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.footer_section .social_container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin: 25px 0;
+}
+
+.footer_section p {
+    margin: 0;
+    text-align: center;
+    color: #ffffff;
+}
+
+.footer_section .social_container h4 {
+    color: #a9a6a6;
+    font-weight: bold;
+    font-size: 2.5rem;
+}
+
+.table>thead>tr>td,
+.table>thead>tr>th,
+.table>tbody>tr>td,
+.table>tbody>tr>th {
+    vertical-align: middle !important;
+}
+
+.col-lg-6 {
+    padding-right: 0;
+    padding-left: 0;
+    /* margin-right: 5px; */
+}
+
+.panel-body {
+    padding: 5px;
+}

@@ -1,0 +1,166 @@
+{{ extend './_layouts/aboutLayout.html' }}
+
+{{ block 'title'}}个人主页{{ /block }}
+
+{{ block 'head'}}
+<link rel="stylesheet" href="/public/css/about.css">
+{{ /block}}
+
+<!-- nav start -->
+{{ include './_partials/nav.html'}}
+<!-- nav end -->
+
+
+{{ block 'content' }}
+
+<!-- start cart header  -->
+<div class="jumbotron">
+    <div class="header_container">
+    </div>
+</div>
+<!-- end cart header  -->
+
+<!-- start container  -->
+<div class="container">
+
+    <div class="row row-offcanvas row-offcanvas-right" id="container-row">
+
+        <div class="col-xs-6 col-sm-4 col-md-4 sidebar-offcanvas" id="sidebar">
+
+            <div class="list-group list-gp">
+                <ul>
+                    <li>
+                        <img src="{{ user.avatar}}" alt="" style="width: 60px;height: 60px;">
+                    </li>
+                    <li>
+                        <h3>{{ user.nickname }}</h3>
+                    </li>
+                    <hr>
+                    <li>
+                        <a href="/about/setting" class="list-group-item active">设置</a>
+                    </li>
+                    <li>
+                        <a href="/about/orderlist" class="list-group-item">订单</a>
+                    </li>
+
+                </ul>
+
+
+            </div>
+        </div>
+        <!--/.sidebar-offcanvas-->
+        <!-- col-xs-12 col-sm-9 -->
+
+        <div class="col-xs-12 col-sm-6 col-md-8" id="right-sidebar">
+            <div class="row">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        个人信息
+                    </div>
+                    <div class="panel-body">
+                        <form class="form-horizontal" action="/about/setting" method="post">
+                            <!-- userId -->
+                            <div class="form-group">
+                                <label for="inputnickname" class="col-sm-2 control-label">账号ID</label>
+                                <div class="col-sm-10 pt">
+                                    {{ user._id }}
+                                    <input type="hidden" value="{{ user._id }}" name="userId">
+                                </div>
+                            </div>
+                            <!-- userStyle -->
+                            <div class="form-group">
+                                <label for="inputnickname" class="col-sm-2 control-label">用户组</label>
+                                <div class="col-sm-10 pt">
+                                    普通用户
+                                </div>
+                            </div>
+                            <!-- useremail -->
+                            <div class="form-group">
+                                <label for="inputPassword3" class="col-sm-2 control-label">用户账号</label>
+                                <div class="col-sm-10 pt">
+                                    {{ user.email }}
+                                </div>
+                            </div>
+                            <!-- nickname -->
+                            <div class="form-group">
+                                <label for="inputnickname" class="col-sm-2 control-label">用户昵称</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="inputnickname" placeholder="nickname"
+                                        value="{{ user.nickname }}" name="nickname">
+                                </div>
+                            </div>
+                            <!-- cellphone -->
+                            <div class="form-group">
+                                <label for="inputcellphone" class="col-sm-2 control-label">用户手机号</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="inputcellphone" placeholder="cellphone"
+                                        value="{{ user.cellphone }}" name="cellphone">
+                                </div>
+                            </div>
+                            <!-- avatar -->
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">头像</label>
+                                <div class="col-sm-10">
+                                    <img src="/public/images/avatar-default.png" alt=""
+                                        style="width: 40px;height: 40px;">
+                                    <label class="radio-inline" style="margin-right: 10px;">
+                                        <input type="radio" name="avatar" value="/public/images/icon.png" checked>
+                                        默认头像
+                                    </label>
+                                    <img src="/public/images/11.gif" alt="" style="width: 40px;height: 40px;">
+                                    <label class="radio-inline">
+                                        <input type="radio" name="avatar" value="/public/images/11.gif">头像一
+                                    </label>
+                                    <img src="/public/images/icon.png" alt="" style="width: 40px;height: 40px;">
+                                    <label class="radio-inline">
+                                        <input type="radio" name="avatar" value="/public/images/icon.png">头像二
+                                    </label>
+                                </div>
+
+                            </div>
+                            <!-- address -->
+                            <div class="form-group">
+                                <label for="inputaddress" class="col-sm-2 control-label">收货地址</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="inputaddress" placeholder="address"
+                                        value="{{ user.address }}" name="address">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="submit" class="btn btn-default update_btn">提交</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <!--/row-->
+    </div>
+    <!--/.col-xs-12.col-sm-9-->
+
+
+</div>
+<!-- end container  -->
+{{ /block }}
+
+<!-- footer start -->
+{{ include './_partials/footer.html'}}
+<!-- footer end -->
+
+{{ block 'script'}}
+<script src="/node_modules/jquery/dist/jquery.min.js"></script>
+<script>
+    var update_btn = document.querySelector('.update_btn');
+    console.log(update_btn);
+    update_btn.addEventListener('click', function () {
+        window.alert('修改成功，请重新登录查看！');
+
+    })
+
+</script>
+{{ /block }}
