@@ -2,7 +2,9 @@ var mongoose = require('mongoose')
 
 var Schema = mongoose.Schema
 
-mongoose.connect('mongodb://localhost/capstone')
+mongoose.connect('mongodb://localhost/capstone', { useMongoClient: true })
+    .then(() => { console.log("数据库连接成功") })
+    .catch(() => { console.log("数据库连接失败") })
 
 var userSchema = new Schema({
     email: {
@@ -50,8 +52,8 @@ var userSchema = new Schema({
             address: String,
             totalPrice: String,
             cartList: Object,
-            created_time:String,
-            last_modified_time:String,
+            created_time: String,
+            last_modified_time: String,
         }
     ],
     // 订单表
@@ -76,11 +78,11 @@ var userSchema = new Schema({
         },
         "tableId": {
             type: String,
-            default:''
+            default: ''
         },
         "tableStatus": {
             type: String,
-            default:''
+            default: ''
         }
     }
 

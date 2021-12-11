@@ -101,6 +101,7 @@
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-2 control-label">头像</label>
                                 <div class="col-sm-10">
+                                    {{ if user.avatar == "/public/images/avatar-default.png"}}
                                     <img src="/public/images/avatar-default.png" alt=""
                                         style="width: 40px;height: 40px;">
                                     <label class="radio-inline" style="margin-right: 10px;">
@@ -115,6 +116,37 @@
                                     <label class="radio-inline">
                                         <input type="radio" name="avatar" value="/public/images/icon.png">头像二
                                     </label>
+                                    {{ else if user.avatar == "/public/images/11.gif" }}
+                                    <img src="/public/images/avatar-default.png" alt=""
+                                        style="width: 40px;height: 40px;">
+                                    <label class="radio-inline" style="margin-right: 10px;">
+                                        <input type="radio" name="avatar" value="/public/images/icon.png" >
+                                        默认头像
+                                    </label>
+                                    <img src="/public/images/11.gif" alt="" style="width: 40px;height: 40px;">
+                                    <label class="radio-inline">
+                                        <input type="radio" name="avatar" value="/public/images/11.gif" checked>头像一
+                                    </label>
+                                    <img src="/public/images/icon.png" alt="" style="width: 40px;height: 40px;">
+                                    <label class="radio-inline">
+                                        <input type="radio" name="avatar" value="/public/images/icon.png">头像二
+                                    </label>
+                                    {{ else}}
+                                    <img src="/public/images/avatar-default.png" alt=""
+                                        style="width: 40px;height: 40px;">
+                                    <label class="radio-inline" style="margin-right: 10px;">
+                                        <input type="radio" name="avatar" value="/public/images/icon.png" >
+                                        默认头像
+                                    </label>
+                                    <img src="/public/images/11.gif" alt="" style="width: 40px;height: 40px;">
+                                    <label class="radio-inline">
+                                        <input type="radio" name="avatar" value="/public/images/11.gif" >头像一
+                                    </label>
+                                    <img src="/public/images/icon.png" alt="" style="width: 40px;height: 40px;">
+                                    <label class="radio-inline">
+                                        <input type="radio" name="avatar" value="/public/images/icon.png" checked>头像二
+                                    </label>
+                                    {{ /if }}
                                 </div>
 
                             </div>
@@ -153,10 +185,9 @@
 <!-- footer end -->
 
 {{ block 'script'}}
-<script src="/node_modules/jquery/dist/jquery.min.js"></script>
 <script>
     var update_btn = document.querySelector('.update_btn');
-    console.log(update_btn);
+    // console.log(update_btn);
     update_btn.addEventListener('click', function () {
         window.alert('修改成功，请重新登录查看！');
 

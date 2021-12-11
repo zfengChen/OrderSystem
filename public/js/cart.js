@@ -97,6 +97,10 @@ $(function () {
 
 
 
+    var datas = {
+        cartList:[]
+    }
+
     function edit(productId, productNum) {
         // console.log(productId);
         // console.log(productNum);
@@ -113,6 +117,9 @@ $(function () {
                 var err_code = data.err_code
                 if (err_code === 0) {
                     console.log(data.message);
+                    datas.cartList = data.message;
+                    var html = template("tpl", datas);
+                    $("#tbody").html(html);
                 } else if (err_code === 500) {
                     window.alert('服务器忙，请稍后重试！')
                 }
@@ -124,15 +131,5 @@ $(function () {
 
     // console.log($('#totalPrice').val())
 
-    // $('.subBtn').on('click', () => {
-    //     $.ajax({
-    //         type: "get",
-    //         url: "url",
-    //         data: "data",
-    //         dataType: "dataType",
-    //         success: function (data) {
 
-    //         }
-    //     });
-    // })
 })

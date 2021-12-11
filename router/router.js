@@ -31,29 +31,43 @@ router.get('/search', (req, res) => {
     var tableId = req.query.tableId
     // console.log(tableId)
     if (tableId == '') {
+        res.status(200).json({
+            err_code: 2,
+            message: '请输入桌子号'
+        })
+    } else if (tableId == 'all') {
         Table.find((err, tables) => {
             if (err) {
                 return res.status(500).send('server error')
             }
-
-            res.render('index.html', {
-                user: req.session.user,
-                tables: tables
+            res.status(200).json({
+                err_code: 0,
+                message: tables
             })
         })
-
-    } else {
+    }else {
         Table.findOne({ tableId: tableId }, (err, table) => {
             if (err) {
                 return res.status(500).send('server error')
             }
 
             // console.log(table)
+            if (table == null) {
+                return res.status(200).json({
+                    err_code: 2,
+                    message: "请输入正确的桌子号"
+                })
+            } else {
+                res.status(200).json({
+                    err_code: 1,
+                    message: table
+                })
+            }
 
-            res.render('index.html', {
-                user: req.session.user,
-                table: table
-            })
+            // res.render('index.html', {
+            //     user: req.session.user,
+            //     table: table
+            // })
 
         })
     }

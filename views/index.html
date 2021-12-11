@@ -14,8 +14,8 @@
 <!-- start main -->
 <div class="container">
 
-
-    <form action="/search" method="get" class="navbar-form navbar-left" role="search">
+    <!--  action="/search" method="get" -->
+    <form action="/search" method="get" class="navbar-form navbar-left" role="search" id="search_form">
         <div class="form-group">
             <input type="text" class="form-control" placeholder="输入餐桌号" name="tableId">
         </div>
@@ -31,28 +31,7 @@
             <div class="panel-body">
                 <table class="table table-striped .col-xs-6" style="min-width: 250px;
                         max-width: auto;">
-                    {{ if table }}
-                    <thead>
-                        <tr>
-                            <th>餐桌号</th>
-                            <th>使用状态</th>
-                            <th>操作</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td scope="row">{{ table.tableId }}</td>
-                            <td>
-                                {{ table.status }}
-                            </td>
-                            <td>
-                                <a href="javascript:;" class="btn btn-primary glyphicon glyphicon-arrow-right btn_a"
-                                    aria-hidden="true"></a>
-                                <input type="hidden" class="hide_status" value="{{table.tableId}}">
-                            </td>
-                        </tr>
-                    </tbody>
-                    {{ else }}
+
 
                     <thead>
                         <tr>
@@ -61,7 +40,7 @@
                             <th>操作</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="tbody">
 
                         {{ each tables}}
 
@@ -84,7 +63,7 @@
 
                     </tbody>
 
-                    {{ /if}}
+
                 </table>
             </div>
         </div>
@@ -100,8 +79,27 @@
 
 {{ block 'script'}}
 <script src="/node_modules/jquery/dist/jquery.js"></script>
+<script src="/node_modules/art-template/lib/template-web.js"></script>
+<script type="text/html" id="tpl">
+    <% for(var i = 0 ; i < list.length ; i ++){ %>
+        <% var item = list[i]; %>
+        <tr>
+            <td><%=item.tableId%></td>
+            <td><%=item.status%></td>
+            <td>
+                <a href="javascript:;"
+                class="btn btn-primary glyphicon glyphicon-arrow-right btn_a btn_sub"
+                onclick="occupied(this)" value1="<%=item.tableId%>"
+                value2="<%=item.status%>"></a>
+            </td>
+        </tr>
+        <% } %>
+</script>
 
 <script>
+    var datas = {
+        list: []
+    }
     // 问题：箭头函数中this指向window
     function occupied(obj) {
         var tableId = $(obj).attr("value1")
@@ -132,6 +130,38 @@
         });
 
     }
+
+    $('#search_form').on('submit', function (e) {
+        e.preventDefault()
+        var formData = $(this).serialize()
+        console.log(formData);
+        $.ajax({
+            url: '/search',
+            type: 'get',
+            data: formData,
+            dataType: 'json',
+            success: function (data) {
+                var err_code = data.err_code
+                if (err_code === 0) {
+                    // console.log(typeof data.message);
+                    datas.list = data.message;
+                    var html = template('tpl', datas)
+                    $("#tbody").html(html)
+                } else if (err_code === 1) {
+                    datas.list = [];
+                    datas.list.push(data.message);
+                    var html = template('tpl', datas);
+                    $("#tbody").html(html);
+                    // console.log(typeof data.message);
+                    
+                } else if (err_code === 2) {
+                    window.alert(data.message);
+                }  else if (err_code === 500) {
+                    window.alert('服务器忙，请稍后重试！')
+                }
+            }
+        })
+    })
 
 
 

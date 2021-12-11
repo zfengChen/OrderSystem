@@ -5,22 +5,6 @@ var ObjectId = require('mongodb').ObjectID;
 
 var router = express.Router()
 
-function userfind(userId) {
-    User.findOne({
-        "_id": userId
-    }, (err, docs) => {
-        if (err) {
-            return res.status(500).json({
-                err_code: 500,
-                message: err.message
-            })
-        }
-        // console.log(docs);
-        console.log(docs);
-        req.session.user = docs;
-    })
-}
-
 // 渲染购物车页面
 router.get('/cart', (req, res) => {
     var userId = req.session.user._id
@@ -107,10 +91,12 @@ router.post('/cart/edit', (req, res) => {
             }
             // console.log(docs);
             // console.log(docs);
+            req.session.user = null;
             req.session.user = docs;
+            
             res.status(200).json({
                 err_code: 0,
-                message: 'ok'
+                message: req.session.user.cartList
             })
         })
 
@@ -122,7 +108,7 @@ router.post('/cart/edit', (req, res) => {
 })
 
 // 获取购物车商品信息
-router.get('/goods/checked', (req, res) => {
+router.get('/cart/checked', (req, res) => {
     var userId = req.query.userId
     // console.log(userId);
     User.findOne({ "_id": userId }, (err, userDoc) => {
@@ -133,13 +119,11 @@ router.get('/goods/checked', (req, res) => {
             // 解决方案 将取出用户文档转换成json格式的字符串
             var cartList = JSON.stringify(userDoc.cartList);
             cartList = JSON.parse(cartList);
-            // console.log(cartList)
+            console.log(req.session.user.cartList)
             res.render('cart.html', {
-                cartList
+                cartList:req.session.user.cartList
             });
         }
-
-
     });
 })
 

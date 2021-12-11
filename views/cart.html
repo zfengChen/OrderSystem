@@ -82,8 +82,7 @@
                         <button type="button" class="btn btn-danger clear-all">清空购物车</button>
                     </th>
                     <th class="price_result">
-                        <form>
-
+                        <form action="/cart/checked" id="getgoods_form" method="get">
                             <div class="price-sum">
                                 总价：￥
                                 <em class="totalPrice">60</em>
@@ -107,14 +106,27 @@
 
 {{ /block }}
 
-
-
 <!-- footer start -->
 {{ include './_partials/footer.html'}}
 <!-- footer end -->
 
 
 {{ block 'script'}}
+<script src="/node_modules/art-template/lib/template-web.js"></script>
+<script type="text/html" id="tpl">
+    <% for(var i = 0 ; i < cartList.length ; i ++){ %>
+        <% var item = cartList[i]; %>
+        <tr>
+            <td>
+                <img src="<%=item.img%>" alt="" width="40px" height="40px">
+            </td>
+            <td><%=item.fname%></td>
+            <td><%=item.productNum%></td>
+            <td><%=item.price%></td>
+            <td>￥<%= item.price * item.productNum%></td>
+        </tr>
+    <% } %>
+</script>
 <script src="/public/js/cart.js"></script>
 <script>
     function remove(productId) {
